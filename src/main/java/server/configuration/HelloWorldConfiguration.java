@@ -7,19 +7,25 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+import server.service.Api;
+import server.service.ApiImpl;
 
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "server")
 public class HelloWorldConfiguration {
-    @Bean
-    public ViewResolver viewResolver() {
-        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setViewClass(JstlView.class);
-        viewResolver.setPrefix("/WEB-INF/views/");
-        viewResolver.setSuffix(".jsp");
-
-        return viewResolver;
-    }
+//    @Bean
+//    public Api api() {
+//        return new ApiImpl();
+//    }
+//    @Bean
+//    public ViewResolver viewResolver() {
+//        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+//        viewResolver.setViewClass(JstlView.class);
+//        viewResolver.setPrefix("/WEB-INF/views/");
+//        viewResolver.setSuffix(".jsp");
+//
+//        return viewResolver;
+//    }
 
 }

@@ -1,4 +1,4 @@
-package server.controller;
+package server.model;
 
 import java.io.Serializable;
 
