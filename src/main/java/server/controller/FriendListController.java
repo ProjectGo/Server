@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 //@RestController
-//@RequestMapping("/")
+//@RequestMapping("/friends")
 public class FriendListController {
 //    @RequestMapping(method = RequestMethod.GET)
 //    public String getFriendList(@RequestHeader(value = "BearerToken") String token) {

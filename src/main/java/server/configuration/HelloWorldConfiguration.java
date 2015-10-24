@@ -14,18 +14,8 @@ import server.service.ApiImpl;
 @EnableWebMvc
 @ComponentScan(basePackages = "server")
 public class HelloWorldConfiguration {
-//    @Bean
-//    public Api api() {
-//        return new ApiImpl();
-//    }
-//    @Bean
-//    public ViewResolver viewResolver() {
-//        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-//        viewResolver.setViewClass(JstlView.class);
-//        viewResolver.setPrefix("/WEB-INF/views/");
-//        viewResolver.setSuffix(".jsp");
-//
-//        return viewResolver;
-//    }
-
+    @Bean
+    public Api api() {
+        return new ApiImpl();
+    }
 }

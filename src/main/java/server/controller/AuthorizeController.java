@@ -16,8 +16,8 @@ import server.service.ApiImpl;
 @RequestMapping(value = "/authorize")
 public class AuthorizeController {
 
-//    @Autowired
-    public Api api = new ApiImpl();
+    @Autowired
+    private Api api;
 
     @RequestMapping(method = RequestMethod.POST)
     public String autorize(@RequestParam(value = "code", required = true) String code) {
