@@ -4,9 +4,21 @@ import java.util.ArrayList;
 
 public class UserResponse {
     public class User {
-        public int id;
-        public String firstName;
-        public String lastName;
+        private int id;
+        private String firstName;
+        private String lastName;
+
+        public int getId() {
+            return id;
+        }
+
+        public String getFirstName() {
+            return firstName;
+        }
+
+        public String getLastName() {
+            return lastName;
+        }
     }
     public int count;
     public ArrayList<User> users;

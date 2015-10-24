@@ -28,7 +28,7 @@ public class FriendListController {
         UserResponse response = api.getFriends(token);
         ArrayList<User> friends = new ArrayList<User>();
         for (UserResponse.User u: response.users) {
-            friends.add(new User(u.id, u.firstName, u.lastName, "vk"));
+            friends.add(new User(u.getId(), u.getFirstName(), u.getLastName(), "vk"));
         }
         return friends.toString();
     }

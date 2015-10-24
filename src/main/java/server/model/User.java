@@ -3,10 +3,10 @@ package server.model;
 import java.io.Serializable;
 
 public class User {
-    public int id;
-    public String firstName;
-    public String lastName;
-    public String service;
+    private int id;
+    private String firstName;
+    private String lastName;
+    private String service;
 
     public User(int newId, String newFirstName, String newLastName, String newService) {
         id = newId;
@@ -14,4 +14,21 @@ public class User {
         lastName = newLastName;
         service = newService;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getService() {
+        return service;
+    }
+
 }
