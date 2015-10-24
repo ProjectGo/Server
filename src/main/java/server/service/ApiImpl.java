@@ -7,6 +7,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import server.model.User;
+import server.model.UserResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,19 +42,12 @@ public class ApiImpl implements Api{
 
     }
 
-//    private String executeRequest()
-
-//    public ArrayList<User> getFriends(String fields){
-//        String request = VK_URL + GET_FRIENDS + FIELDS_ARE + fields + API_VERSION + TOKEN_IS + vk_token;
-//        User
-//        ArrayList<User> users = new ArrayList<User>();
-//        if (answer == null)
-//            return users;
-//
-//
-//
-//        return users;
-//    }
+    @Override
+    public List<User> getFriends(String token){
+        String request = VK_URL + GET_FRIENDS + FIELDS_ARE + fields + API_VERSION + TOKEN_IS + vk_token;
+        UserResponse response = sendRequest(request, UserResponse.class);
+        return response.users;
+    }
     @Override
     public String getAccessToken(String code) {
         String url = "https://oauth.vk.com/access_token";
@@ -62,10 +56,5 @@ public class ApiImpl implements Api{
                 cliendId, clientSecred, redirectUrl, code);
 
         return sendRequest(url + params, String.class);
-    }
-
-    @Override
-    public List<Object> getFriends() {
-        return null;
     }
 }
