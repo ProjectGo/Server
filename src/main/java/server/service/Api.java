@@ -1,7 +1,7 @@
 package server.service;
 
 import server.model.User;
-import server.model.UserResponse;
+import server.vkapi.UserResponse;
 
 import java.util.List;
 

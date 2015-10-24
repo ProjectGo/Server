@@ -20,7 +20,7 @@ public class AuthorizeController {
     private Api api;
 
     @RequestMapping(method = RequestMethod.POST)
-    public String autorize(@RequestParam(value = "code", required = true) String code) {
+    public String autorize(@RequestParam(value = "token", required = true) String code) {
         return api.getAccessToken(code);
     }
 

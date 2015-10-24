@@ -7,7 +7,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import server.model.User;
-import server.model.UserResponse;
+import server.vkapi.UserResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,9 +44,10 @@ public class ApiImpl implements Api{
 
     @Override
     public UserResponse getFriends(String token){
-        String request = VK_URL + GET_FRIENDS + FIELDS + API_VERSION + TOKEN_IS + vk_token;
-        UserResponse response = sendRequest(request, UserResponse.class);
-        return response;
+        String request = VK_URL + GET_FRIENDS + FIELDS + API_VERSION + TOKEN_IS + token;
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(request, UserResponse.class);
+//        UserResponse response = sendRequest(request, UserResponse.class);
     }
     @Override
     public String getAccessToken(String code) {
