@@ -1,4 +1,4 @@
-package server.service;
+package server.service.DAO;
 
 import server.model.Group;
 import server.model.User;
