@@ -2,8 +2,16 @@ package server.model;
 
 import java.io.Serializable;
 
-public class User implements Serializable {
+public class User {
     public int id;
-    public String first_name;
-    public String last_name;
+    public String firstName;
+    public String lastName;
+    public String service;
+
+    public User(int newId, String newFirstName, String newLastName, String newService) {
+        id = newId;
+        firstName = newFirstName;
+        lastName = newLastName;
+        service = newService;
+    }
 }

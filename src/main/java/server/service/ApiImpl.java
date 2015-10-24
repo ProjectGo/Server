@@ -15,7 +15,7 @@ import java.util.List;
 public class ApiImpl implements Api{
     public static final String VK_URL="https://api.vk.com/method/";
     public static final String GET_FRIENDS = "friends.get";
-    public static final String FIELDS_ARE = "?fields=";
+    public static final String FIELDS = "?fields=first_name,family_name";
     public static final String TOKEN_IS = "&access_token=";
     public static final String API_VERSION="&version=5.8";
     String vk_token;
@@ -43,10 +43,10 @@ public class ApiImpl implements Api{
     }
 
     @Override
-    public List<User> getFriends(String token){
-        String request = VK_URL + GET_FRIENDS + FIELDS_ARE + fields + API_VERSION + TOKEN_IS + vk_token;
+    public UserResponse getFriends(String token){
+        String request = VK_URL + GET_FRIENDS + FIELDS + API_VERSION + TOKEN_IS + vk_token;
         UserResponse response = sendRequest(request, UserResponse.class);
-        return response.users;
+        return response;
     }
     @Override
     public String getAccessToken(String code) {

@@ -1,5 +1,8 @@
 package server.service;
 
+import server.model.User;
+import server.model.UserResponse;
+
 import java.util.List;
 
 /**
@@ -7,5 +10,5 @@ import java.util.List;
  */
 public interface Api {
     String getAccessToken(String code);
-    List<Object> getFriends();
+    UserResponse getFriends(String token);
 }
