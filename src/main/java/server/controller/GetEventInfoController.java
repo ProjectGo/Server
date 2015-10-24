@@ -1,21 +1,13 @@
 package server.controller;
 
 import org.springframework.web.bind.annotation.RestController;
-
-package server.controller;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 import server.Properties.Property;
-import server.model.Event;
-import server.model.Group;
-import server.model.User;
+import server.model.Member;
 import server.service.Api;
-import server.vkapi.Response;
-import server.vkapi.UserResponse;
 
 import java.util.ArrayList;
 
@@ -27,13 +19,12 @@ public class GetEventInfoController {
     private Api api;
 
     @RequestMapping(method = RequestMethod.GET, produces = Property.JSON_UTF8)
-    public Event getEvents(@RequestHeader(value = "token") String token) {
+    public ArrayList<Member> getEvents(@RequestHeader(value = "token") String token) {
 
-        Event event = Event();
-        ArrayList<User> lonely = new ArrayList<User>();
-        lonely.add(new User(1, "Name", "OtherName", "vk"));
-        events.add(new Event("OloloEvent", "Dumskaya", "12.12.2012", 1));
+        ArrayList<Member> some = new ArrayList<Member>();
+        some.add(new Member(1, "Name", "OtherName", "vk", Member.Decision.FUCKYOU));
+        some.add(new Member(2, "Kirill", "Melentyev", "vk", Member.Decision.GO));
 
-        return event;
+        return some;
     }
 }

@@ -6,6 +6,8 @@ public class User {
     private String lastName;
     private String service;
 
+    public User() {}
+
     public User(int newId, String newFirstName, String newLastName, String newService) {
         id = newId;
         firstName = newFirstName;
