@@ -1,16 +1,11 @@
 package server.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import server.model.User;
 import server.vkapi.UserResponse;
-
-import java.util.ArrayList;
-import java.util.List;
 @Component
 public class ApiImpl implements Api{
     public static final String VK_URL="https://api.vk.com/method/";

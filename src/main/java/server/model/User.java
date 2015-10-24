@@ -1,7 +1,5 @@
 package server.model;
 
-import java.io.Serializable;
-
 public class User {
     private int id;
     private String firstName;
