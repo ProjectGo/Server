@@ -8,8 +8,8 @@ import javax.persistence.*;
 @Table(name = "Groups")
 public class Group {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     @Column(name = "name")
     private String name;
@@ -33,4 +33,7 @@ public class Group {
         this.id = id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 }

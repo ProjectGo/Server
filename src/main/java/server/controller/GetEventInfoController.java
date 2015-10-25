@@ -1,10 +1,10 @@
 package server.controller;
 
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import server.Properties.Property;
 import server.model.Member;
 import server.service.Api;
@@ -22,8 +22,8 @@ public class GetEventInfoController {
     public ArrayList<Member> getEvents(@RequestHeader(value = "token") String token) {
 
         ArrayList<Member> some = new ArrayList<Member>();
-        some.add(new Member(1, "Name", "OtherName", "vk", Member.Decision.FUCKYOU));
-        some.add(new Member(2, "Kirill", "Melentyev", "vk", Member.Decision.GO));
+        some.add(new Member(Member.Decision.FUCKYOU));
+        some.add(new Member(Member.Decision.GO));
 
         return some;
     }

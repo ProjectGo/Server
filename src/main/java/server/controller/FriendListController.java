@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import server.Properties.Property;
-import server.model.User;
+import server.dto.UserDTO;
 import server.service.Api;
 import server.vkapi.Response;
 import server.vkapi.UserResponse;
@@ -22,11 +22,11 @@ public class FriendListController {
 
 
     @RequestMapping(method = RequestMethod.GET, produces = Property.JSON_UTF8)
-    public ArrayList<User> getFriendList(@RequestHeader(value = "token") String token) {
+    public ArrayList<UserDTO> getFriendList(@RequestHeader(value = "token") String token) {
         UserResponse response = api.getFriends(token);
-        ArrayList<User> friends = new ArrayList<User>();
+        ArrayList<UserDTO> friends = new ArrayList<UserDTO>();
         for (Response u: response.getResponse()) {
-            friends.add(new User(u.getUserId(), u.getFirstName(), u.getLastName(), "vk"));
+            friends.add(new UserDTO(u.getUserId(), u.getFirstName(), u.getLastName(), "vk"));
         }
         return friends;
     }

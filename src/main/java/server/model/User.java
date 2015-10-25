@@ -1,40 +1,33 @@
 package server.model;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "Users")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String firstName;
-    private String lastName;
-    private String service;
+
+    @Column(name = "vkid")
+    private String vkId;
     private List<Event> events;
 
     public User() {}
-
-    public User(int newId, String newFirstName, String newLastName, String newService) {
-        id = newId;
-        firstName = newFirstName;
-        lastName = newLastName;
-        service = newService;
-    }
 
     public int getId() {
         return id;
     }
 
-    public String getFirstName() {
-        return firstName;
+
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
+    public String getVkId() {
 
-    public String getService() {
-        return service;
+        return vkId;
     }
 
     @ManyToMany
