@@ -49,6 +49,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserDTO> getUsers(String token, int groupId) {
         GroupService groupService;
-
+        return null;
     }
 }
