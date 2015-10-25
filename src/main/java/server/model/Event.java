@@ -10,19 +10,20 @@ import java.util.Set;
 @Table(name = "Events")
 public class Event {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private int id;
-    @Column(name = "name")
     private String description;
-    @Column(name = "place")
     private String place;
-    @Column(name = "time")
     private String time;
-    @Column(name = "groupId")
     private int groupId;
-    @ManyToMany(mappedBy = "events")
+    @JoinTable(name = "People2Events", joinColumns = {
+            @JoinColumn(name = "eventId", nullable = false, updatable = false, referencedColumnName = "id") },
+            inverseJoinColumns = { @JoinColumn(name = "userId",
+                    nullable = false, updatable = false, referencedColumnName = "id") })
     private Set<User> users = new HashSet<User>(0);
+
+    public Event() {
+    }
 
     public Event(String newDescription, String newPlace, String newTime, int newGroupId) {
         description = newDescription;
@@ -31,22 +32,24 @@ public class Event {
         groupId = newGroupId;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
-
+    @Column(name = "name")
     public String getDescription() {
         return description;
     }
-
+    @Column(name = "place")
     public String getPlace() {
         return place;
     }
-
+    @Column(name = "time")
     public String getTime() {
         return time;
     }
-
+    @Column(name = "groupId")
     public int getGroupId() {
         return groupId;
     }
@@ -57,7 +60,34 @@ public class Event {
 //            @JoinColumn(name = "eventId", nullable = false, updatable = false, referencedColumnName = "id") },
 //            inverseJoinColumns = { @JoinColumn(name = "userId",
 //                    nullable = false, updatable = false, referencedColumnName = "id") })
-    public Set<User> getUsers() {
-        return users;
+//    @ManyToMany(mappedBy = "events", fetch = FetchType.LAZY)
+//    public Set<User> getUsers() {
+//        return users;
+//    }
+//    public void setUsers(Set<User> users) {
+//        this.users = users;
+//    }
+
+
+    public void setId(int id) {
+        this.id = id;
     }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public void setGroupId(int groupId) {
+        this.groupId = groupId;
+    }
+
+
 }

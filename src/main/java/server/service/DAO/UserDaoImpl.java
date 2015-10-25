@@ -19,9 +19,9 @@ import java.util.List;
 @Repository
 @org.springframework.transaction.annotation.Transactional(propagation = Propagation.REQUIRES_NEW)
 public class UserDaoImpl extends AbstractDao {
-    public List<User> getUsersByVkId(Collection<Long> users) {
+    public List<User> getUsersByVkId(Collection<String> users) {
         Criteria criteria = getSession().createCriteria(User.class);
-        criteria.add(Restrictions.eq("vkId", users));
+        criteria.add(Restrictions.in("vkId", users));
         return (List<User>)criteria.list();
 
     }

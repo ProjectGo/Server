@@ -7,23 +7,18 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "Users")
+@Table(name = "Users", catalog = "postgres", schema = "public")
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private int id;
 
-    @Column(name = "vkid")
     private String vkId;
-    @ManyToMany
-    @JoinTable(name = "People2Events", joinColumns = {
-            @JoinColumn(name = "userId", nullable = false, updatable = false, referencedColumnName = "id") },
-            inverseJoinColumns = { @JoinColumn(name = "eventId",
-                    nullable = false, updatable = false, referencedColumnName = "id") })
+
     private Set<Event> events = new HashSet<Event>(0);
 
     public User() {}
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -32,15 +27,26 @@ public class User {
     public void setId(int id) {
         this.id = id;
     }
-
+    @Column(name = "vkid")
     public String getVkId() {
 
         return vkId;
     }
 
-
+    @ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+    @JoinTable(name = "People2Events", joinColumns = {
+            @JoinColumn(name = "userId", nullable = false, updatable = false, referencedColumnName = "id") },
+            inverseJoinColumns = { @JoinColumn(name = "eventId",
+                    nullable = false, updatable = false, referencedColumnName = "id") })
     public Set<Event> getEvents() {
         return events;
     }
 
+    public void setVkId(String vkId) {
+        this.vkId = vkId;
+    }
+
+    public void setEvents(Set<Event> events) {
+        this.events = events;
+    }
 }

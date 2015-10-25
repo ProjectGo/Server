@@ -38,9 +38,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserDTO> getUsers(String token) {
         List<UserDTO> userDTOs = new ArrayList<UserDTO>();
-        Map<Long, VkUserDTO> userMap = new HashMap<Long, VkUserDTO>();
+        Map<String, VkUserDTO> userMap = new HashMap<String, VkUserDTO>();
         for (VkUserDTO vkUserDTO : getVkUsers(token)) {
-            userMap.put(vkUserDTO.getVkUserId(), vkUserDTO);
+            userMap.put(Long.toString(vkUserDTO.getVkUserId()), vkUserDTO);
         }
         List<User> users = userDao.getUsersByVkId(userMap.keySet());
 
