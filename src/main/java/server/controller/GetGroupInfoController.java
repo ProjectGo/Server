@@ -21,7 +21,7 @@ public class GetGroupInfoController {
 
 
     @RequestMapping(method = RequestMethod.GET, produces = Property.JSON_UTF8)
-    public Group getGroups(@RequestHeader(value = "token") String token) {
+    public Group getGroupInfo(@RequestHeader(value = "token") String token) {
 
         ArrayList<User> some = new ArrayList<User>();
         some.add(new User(1, "Name", "OtherName", "vk"));

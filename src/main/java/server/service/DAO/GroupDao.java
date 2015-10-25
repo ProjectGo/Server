@@ -10,4 +10,5 @@ import java.util.List;
 public interface GroupDao {
     void saveGroup(GroupDBO group);
     List<GroupDBO> findAllGroups();
+
 }

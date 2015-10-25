@@ -6,10 +6,6 @@ import server.service.DAO.model.GroupDBO;
 
 import java.util.List;
 
-/**
- * Created by philipp on 25.10.15.
- */
-
 @Repository
 public class GroupDaoImpl extends AbstractDao implements GroupDao {
     public void saveGroup(GroupDBO groupDBO) {
