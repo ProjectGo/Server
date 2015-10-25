@@ -1,5 +1,6 @@
 package server.service.DAO;
 
+import server.model.Group;
 import server.service.DAO.model.GroupDBO;
 
 import java.util.List;
@@ -10,5 +11,5 @@ import java.util.List;
 public interface GroupDao {
     void saveGroup(GroupDBO group);
     List<GroupDBO> findAllGroups();
-
+    Group getGroupInfo(int id);
 }
