@@ -31,8 +31,11 @@ public class UserServiceImpl implements UserService {
     public List<UserDTO> getUsers(String token) {
         List<UserDTO> userDTOs = new ArrayList<UserDTO>();
         for (VkUserDTO vkUserDTO : getVkUsers(token)) {
+            //collect vkIds
             userDTOs.add(new UserDTO(vkUserDTO));
         }
+        //get user from db by vkids
+        // create result list for user from db by merge data from vk and db
         return userDTOs;
     }
 
