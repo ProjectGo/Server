@@ -9,8 +9,8 @@ import javax.persistence.Table;
  * Created by philipp on 25.10.15.
  */
 
-@Entity
-@Table(name = "People2Groups")
+//@Entity
+//@Table(name = "People2Groups")
 public class People2Group {
     private int groupId;
     private User user;
