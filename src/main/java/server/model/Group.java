@@ -1,20 +1,36 @@
 package server.model;
 
-import java.util.List;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Groups")
 public class Group {
-    private String name;
-    private List<User> participants;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
-    public Group(String newName, List<User> newParticipants) {
+    @Column(name = "name")
+    private String name;
+
+    public Group(String newName) {
         name = newName;
-        participants = newParticipants;
     }
+
     public String getName() {
         return name;
     }
-
-    public List<User> getParticipants() {
-        return participants;
+    public void setName(String name) {
+        this.name = name;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
 }

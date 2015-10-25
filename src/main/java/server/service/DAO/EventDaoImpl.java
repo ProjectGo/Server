@@ -5,7 +5,6 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import server.model.Event;
 import server.model.Member;
-import server.service.DAO.model.GroupDBO;
 
 import java.util.List;
 

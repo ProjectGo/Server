@@ -29,7 +29,7 @@ public class GetGroupsController {
         ArrayList<Group> groups = new ArrayList<Group>();
         ArrayList<User> lonely = new ArrayList<User>();
         lonely.add(new User(1, "Name", "OtherName", "vk"));
-        groups.add(new Group("Ololo", lonely));
+        groups.add(new Group("Ololo"));
 
         return groups;
     }

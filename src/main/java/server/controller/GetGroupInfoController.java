@@ -1,10 +1,10 @@
 package server.controller;
 
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import server.Properties.Property;
 import server.model.Group;
 import server.model.User;
@@ -26,7 +26,7 @@ public class GetGroupInfoController {
         ArrayList<User> some = new ArrayList<User>();
         some.add(new User(1, "Name", "OtherName", "vk"));
         some.add(new User(2, "Kirill", "Melentyev", "vk"));
-        Group group = new Group("Buhat", some);
+        Group group = new Group("Buhat");
 
         return group;
     }
