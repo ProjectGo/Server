@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import server.Properties.Property;
+import server.enums.Decision;
 import server.model.Member;
 import server.service.Api;
 
@@ -21,10 +22,6 @@ public class GetEventInfoController {
     @RequestMapping(method = RequestMethod.GET, produces = Property.JSON_UTF8)
     public ArrayList<Member> getEvents(@RequestHeader(value = "token") String token) {
 
-        ArrayList<Member> some = new ArrayList<Member>();
-        some.add(new Member(Member.Decision.FUCKYOU));
-        some.add(new Member(Member.Decision.GO));
-
-        return some;
+        return null;
     }
 }

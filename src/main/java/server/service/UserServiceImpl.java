@@ -1,21 +1,31 @@
 package server.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import server.dto.EventDTO;
 import server.dto.UserDTO;
 import server.dto.VkUserDTO;
+import server.model.Event;
+import server.model.User;
+import server.service.DAO.UserDaoImpl;
 import server.vkapi.Response;
 import server.vkapi.UserResponse;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-/**
- * Created by philipp on 25.10.15.
- */
+@Component
+@Transactional
 public class UserServiceImpl implements UserService {
 
     @Autowired
     private Api api;
+
+    @Autowired
+    private UserDaoImpl userDao;
 
     private List<VkUserDTO> getVkUsers(String token)
     {
@@ -30,12 +40,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserDTO> getUsers(String token) {
         List<UserDTO> userDTOs = new ArrayList<UserDTO>();
+        Map<Long, VkUserDTO> userMap = new HashMap<Long, VkUserDTO>();
         for (VkUserDTO vkUserDTO : getVkUsers(token)) {
-            //collect vkIds
-            userDTOs.add(new UserDTO(vkUserDTO));
+            userMap.put(vkUserDTO.getVkUserId(), vkUserDTO);
         }
-        //get user from db by vkids
-        // create result list for user from db by merge data from vk and db
+        List<User> users = userDao.getUsersByVkId(userMap.keySet());
+
+        for (User user: users) {
+            UserDTO resultUser = new UserDTO(userMap.get(user.getVkId()));
+            resultUser.setId(user.getId());
+        }
         return userDTOs;
     }
 
@@ -49,6 +63,21 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserDTO> getUsers(String token, int groupId) {
         GroupService groupService;
+        return null;
+    }
 
+    public List<EventDTO> getUserEvents(int id) {
+        List<EventDTO> events = new ArrayList<EventDTO>();
+        User user = userDao.getUser(id);
+        for (Event event: user.getEvents()) {
+            EventDTO resultEvent = new EventDTO();
+            resultEvent.setId(event.getId());
+            resultEvent.setGroupId(event.getGroupId());
+            resultEvent.setDescription(event.getDescription());
+            resultEvent.setPlace(event.getPlace());
+            resultEvent.setTime(event.getTime());
+            events.add(resultEvent);
+        }
+        return events;
     }
 }

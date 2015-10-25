@@ -8,6 +8,8 @@ public class BaseUserDTO {
     private String lastName;
     private String service;
 
+    public BaseUserDTO() {}
+
     public BaseUserDTO(String firsName, String lastName, String service) {
         this.firsName = firsName;
         this.lastName = lastName;

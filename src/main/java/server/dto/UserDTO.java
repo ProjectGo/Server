@@ -6,6 +6,8 @@ package server.dto;
 public class UserDTO extends BaseUserDTO {
     private int id;
 
+    public UserDTO() {
+    }
 
     public UserDTO(int id, String firsName, String lastName, String service) {
         this(firsName, lastName, service);

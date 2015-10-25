@@ -10,4 +10,6 @@ public interface EventService {
     void saveEvent(Event event);
     List<Member> findAllParticipants(int id);
     List<Event> findAllEvents(int id);
+
+    void findAllEvents();
 }

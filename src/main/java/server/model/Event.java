@@ -1,10 +1,13 @@
 package server.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
-@Table(name = "Event")
+@Table(name = "Events")
 public class Event {
 
     @Id
@@ -18,7 +21,8 @@ public class Event {
     private String time;
     @Column(name = "groupId")
     private int groupId;
-    private List<User> users;
+    @ManyToMany(mappedBy = "events")
+    private Set<User> users = new HashSet<User>(0);
 
     public Event(String newDescription, String newPlace, String newTime, int newGroupId) {
         description = newDescription;
@@ -47,8 +51,13 @@ public class Event {
         return groupId;
     }
 
-    @ManyToMany(mappedBy = "events")
-    public List<User> getUsers() {
+
+//    @ManyToMany
+//    @JoinTable(name = "People2Events", joinColumns = {
+//            @JoinColumn(name = "eventId", nullable = false, updatable = false, referencedColumnName = "id") },
+//            inverseJoinColumns = { @JoinColumn(name = "userId",
+//                    nullable = false, updatable = false, referencedColumnName = "id") })
+    public Set<User> getUsers() {
         return users;
     }
 }

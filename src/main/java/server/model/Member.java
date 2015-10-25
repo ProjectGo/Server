@@ -4,8 +4,8 @@ import server.enums.Decision;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "People2Event")
+//@Entity
+//@Table(name = "People2Event")
 public class Member {
 
     private Event event;

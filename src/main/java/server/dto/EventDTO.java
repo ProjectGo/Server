@@ -16,7 +16,7 @@ public class EventDTO {
     private String place;
     private String time;
     private int groupId;
-    private List<User> users;
+    private List<UserDTO> users;
 
     public EventDTO() {
 
@@ -29,17 +29,6 @@ public class EventDTO {
         groupId = newGroupId;
     }
 
-    public EventDTO(Event event) {
-        this.id = event.getId();
-        this.description = event.getDescription();
-        this.place = event.getPlace();
-        this.time = event.getTime();
-        this.groupId = event.getGroupId();
-        users = new ArrayList<User>();
-        for(User user : event.getUsers()) {
-            users.add(new User(user));
-        }
-    }
 
     public int getId() {
         return id;
@@ -60,7 +49,8 @@ public class EventDTO {
     public int getGroupId() {
         return groupId;
     }
-    public List<User> getUsers() {
+
+    public List<UserDTO> getUsers() {
         return users;
     }
 
@@ -84,7 +74,7 @@ public class EventDTO {
         this.groupId = groupId;
     }
 
-    public void setUsers(List<User> users) {
+    public void setUsers(List<UserDTO> users) {
         this.users = users;
     }
 }
